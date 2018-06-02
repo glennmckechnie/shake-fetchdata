@@ -35,29 +35,22 @@ echo "<!doctype html>
   </p><p>
   The time is recorded as UTC time ( $Utc ), not as local time ( $Local ).<br>The resulting image is updated every 2 minutes, although there will be a time lag as it needs to be fetched from the unit first.<br><br> Click the image to further enlarge it.</p>" > $ind_html
 
-#style='width:628px;height:692px;border:0'
 style="<img src=\"&\" alt=\"Helicorder image\" style=\"width:628px;height:692px;border:0\">"
 style2="<img src=\"&\" alt=\"Helicorder image\" style=\"width:157px;height:173px;border:0\"><\/a>"
 for i in `find -L . -mount -depth -maxdepth 1 -type f ! -name 'ind*'`
  do
-# echo `basename $i`
-#  echo $i | sed 's/^.*/<a href="&">&<\/a><br>/' >> $ind_html
-  #echo `basename $i` | sed 's/^.*/<a href="&"><img src="&" alt="Helicorder image" style="width:628px;height:692px;border:0"><\/a><br>/' >> $ind_html
   if [ $flag -eq 1 ]
   then
     echo `basename $i` | sed "s/^.*/<a href=\"&\">$style<\/a><hr><h2>Archives<\/h2>/" >> $ind_html
     flag=0
   else
-#  echo $i | sed 's/^.*/<a href="&">&<\/a><br>/' >> $ind_html
     YMD=$(echo `basename $i`|cut -d'.' -f2|awk '{print substr($0,0,8)}')
     HH=$(echo `basename $i`|cut -d'.' -f2|awk '{print substr($0,9,3)}')
-    #echo YMD-$YMD
     hdate=`date -d $YMD +'%Y-%m-%d'`
-    #echo hdate-$hdate
-
-    #cut -d'.' 's/^.*/<a href="&">&<\/a><br>/' >> $ind_html
+    # text and image
     echo `basename $i` | sed "s/^.*/<a href=\"&\">$hdate ($HH)<br> $style2<br>/" >> $ind_html
+    # text only
+    #echo `basename $i` | sed "s/^.*/<a href=\"&\">$hdate ($HH)<\/a><br>/" >> $ind_html
   fi
-#style='width:628px;height:692px;border:0'
 done
 echo '<br><hr></body></html>' >> $ind_html
