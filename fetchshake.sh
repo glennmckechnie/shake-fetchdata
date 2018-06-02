@@ -26,8 +26,18 @@ echo "<!doctype html>
   <head>
    <title>MyShake - seismology for the masses!</title>
    <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />
+    <link rel=\"icon\" type=\"image/png\" href=\"../favicon.ico\" />
+    <link rel=\"stylesheet\" type=\"text/css\" href=\"../seasons.css\"/>
+    <script src=\"../standard.js\"></script>
   </head>
-  <body>
+ <body onload=\"setup();\">
+ <div id=\"title_bar\">
+  <div id=\"title\">
+    <h1 class=\"page_title\">Messmate Farm, Broomfield, Victoria</h1>
+  </div>
+</div>
+<div id=\"contents\">
+   <p><a href=\"../index.html\">&#10096; Current Conditions</a></p>
   <h1>MyShake: seismology for the masses!</h1>
   <p><a href=\"https://raspberryshake.org/about/\">Raspberryshake.org</a> is a project that encourages and assists with the deployment of personal seismographs.<br> These seismographs use the raspberrypi mini computer to monitor an attached digitizer and a super sensitive motion sensor(s).
   </p><p>
@@ -55,4 +65,4 @@ for i in `find -L . -mount -depth -maxdepth 1 -type f ! -name 'ind*'`
     #echo `basename $i` | sed "s/^.*/<a href=\"&\">$fdate ($HH)<\/a><br>/" >> $ind_html
   fi
 done
-echo '<br><hr></body></html>' >> $ind_html
+echo '<br><hr></div></body></html>' >> $ind_html
