@@ -5,7 +5,7 @@
 # */2 * * * * bash /home/pi/git-masterofpis/myshake/fetchshake.sh
 # or use this entry to fetch ALL the data, twice daily (consider it a backup script)
 # nothe the final argument on the line - 'all' It could be anything, but it's needed!
-# */1 0,12  * * * bash /home/pi/git-masterofpis/myshake/fetchshake.sh all
+# 1 0,12  * * * bash /home/pi/git-masterofpis/myshake/fetchshake.sh all
 
 # Unless you're using weewx and the seasons skin, or need an include file,
 # then leave this as is, otherwise weewx='weewx'
